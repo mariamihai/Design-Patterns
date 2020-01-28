@@ -1,0 +1,10 @@
+Visitor Design Pattern - Example
+(https://www.baeldung.com/java-visitor-pattern)
+
+Composite object which consists of components. The object's structure is fixed - we either can't change it or we don't plan to add new types of elements to the structure.
+=> Extract the algorithm which will be applied to the object structure from the classes => put it in the Visitor class
+
+The Open/Close principle is used => we don't modify the code, but we still extend the functionality by providing a new VISITOR implementation.
+
+- Document object that consists of JSON and XML concrete elements; the elements have a common abstract superclass - Element.
+- The Element class has an abstratc method which accepts the Visitor interface.

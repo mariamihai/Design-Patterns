@@ -1,0 +1,34 @@
+Strategy Design Pattern - About
+
+INTENT
+- define a family of algorithms, encapsulate each one, and make them interchangeable. Strategy lets the algorithm vary independently from the clients that use it.
+- capture the abstraction in an interface, bury implementation details in derived classes.
+
+PROBLEM
+
+DISCUSSION
+- "Open-Closed principle". Encapsulate interface details in a base class and bury implementation details in derived classes. Clients can then couple themselves to an interface and not have to 
+experience the upheaval associated with change: no impact when the number of derived classes change and no impact when the implementation of a derived class changes.
+
+- "Abstract coupling" - "Program to an interface, not an implementation".
+
+The Interface entity could represent either an abstract base class, or the method signature expectations by the client. In the former case, the inheritance hierarchy represents dynamic 
+polymorphism. In the latter case, the Interface entity represents template code in the client and the inheritance hierarchy represents static polymorphism.
+
+We create objects which represent various strategies and a context object whose behavior as per its strategy object. The strategy object changes the executing algorithm of the context object.
+
+EXAMPLE
+- modes of transportation to an airport. The traveler must chose the Strategy based on trade-offs between cost, convenience and time.
+
+CHECK LIST
+- identify an algorithm (a behavior) that the client would prefer to access through a "flex point"
+- specify the signature for that algorithm in an interface
+- bury the alternative implementation details in derived classes
+- clients of the algorithm couple themselves to the interface
+
+RULES OF THUMB
+- State is like Strategy except in its intent
+- Strategy lets you change the guts of an object. Decorator lets you change the skin
+- Strategy, State, Bridge, and to some degree Adapter, have similar solution structures. They all share elements of the "handle/body" idiom. They differ in intent (they solve different problems).
+- Strategy has 2 different implementations, the first is similar to State. The Difference is in binding times (Strategy is a bind-once pattern, whereas State is more dynamic).
+- Strategy objects often make good Flyweights

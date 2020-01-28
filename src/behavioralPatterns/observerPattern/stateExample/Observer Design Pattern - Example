@@ -1,0 +1,7 @@
+Observer Design Pattern - Example
+
+- 3 actor classes:
+	- Subject - object having methods to attach and detach observers to a client object
+	- abstract class Observer, concrete class Subject that is extending Observer
+	- Client
+- ObserverPatternDemo will use Subject and concrete class object to show observer pattern in action.

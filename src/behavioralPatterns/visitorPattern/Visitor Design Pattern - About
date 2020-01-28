@@ -1,0 +1,67 @@
+Visitor Design Pattern - About
+
+INTENT
+- represent an operation to be performed on the elements of an object structure. Visitor lets you define a new operation without changing the classes of the elements on which it operates
+- the classic technique for recovering lost type information
+- do the right thing based on the type of 2 objects
+- double dispatch
+
+PROBLEM
+Many distinct and unrelated operations need to be performed on node objects in a heterogeneous aggregate structure. You want to avoid "polluting" the node classes with these operations. And you don't
+want to have to query the type of each node and cast the pointer to the correct type before performing the desired operation.
+
+DISCUSSION
+We use a visitor class which changes the executing algorithm of an element class. By this way, execution algorithm of element can vary as and when visitor varies. The element object has to accept the visitor 
+object so that visitor object handles the operation on the element object.
+
+Visitor's primary purpose is to abstract functionality that can be applied to an aggregate hierarchy of "element" objects. Processing functionality is removed from their list of responsibilities.
+New functionality can easily be added to the original inheritance hierarchy by creating a new Visitor class.
+
+"Single dispatch" => the operation that is executed depends on the name of the request and the type of the receiver.
+Visitor implements "double dispatch" => the operation executed depends on the name of the request, and the type of TWO receivers (the type of the Visitor and the type of the element it visits).
+
+Implementation: create a Visitor class hierarchy that defines a pure virtual VISIT() method in the abstract base class for each concrete derived class in the aggregate node hierarchy. Each VISIT()
+method accepts a single argument - a pointer or reference to an original Element derived class.
+Each operation to be supported is modeled with a concrete derived class of the Visitor hierarchy. The VISIT() methods declared in the Visitor base class are now defined in each derived subclass by allocating 
+the "type query and cast" code in the original implementation to the appropriate overloaded VISIT() method.
+
+Add a single pure virtual ACCEPT() method to the base class of the Element hierarchy. It is defined to receive a single argument - a pointer or reference to the abstract base class of the Visitor hierarchy.
+Each concrete derived class of the Element hierarchy implements the ACCEPT() method by simply calling the VISIT() method on the concrete derived instance of the Visitor hierarchy that it was passed, passing 
+its "this" pointer as the sole argument.
+
+When the client needs an operation to be performed, he creates an instance of the Visitor object, calls the ACCEPT() method on each Element object and passes the Visitor object.
+The ACCEPT() method causes flow of control to find the correct Element subclass. Then when the VISIT() method is invoked, flow control is vectored to the correct Visitor subclass. ACCEPT() dispatch
+plus VISIT() dispatch equals double dispatch.
+
+The Visitor pattern makes adding new operations (or utilities) easy - simply add a new Visitor derived class.  But if the subclasses in the aggregate node hierarchy are not stable, keeping the Visitor 
+subclasses in sync requires a prohibitive amount of effort.
+
+An acknowledged object to the Visitor pattern is that it represents a regression to functional decomposition - separate the algorithms from the data structures. A better perspective/rationale is the goal 
+of promoting non-traditional behavior to full object status.
+
+The Element hierarchy is instrumented with a "universal method adapter". The implementation of ACCEPT() in each Element derived class is always the same but it cannot be moved to the Element base class and 
+inherited by all derived classes because a reference to THIS in the Element class always maps to the base of type Element.
+
+When the polymorphic firstDispatch() method is called on an abstract First object, the concrete type of that object is "recovered". When the polymorphic secodnDispatch() method is called on an abstract Second 
+object, its concrete type is "recovered". The application functionality appropriate for this pair of types can now be exercised.
+
+EXAMPLE
+The visitor pattern represents an operation to be performed on the elements of an object structure without changing the classes on which it operates. Eg., a taxi company. When a person calls a taxi company 
+(accepting a visitor), the company dispatches a cab to the customer. Upon entering the taxi the customer, or the Visitor, is no longer in control of his/her own transportation, the taxi (driver) is.
+
+CHECK LIST
+- confirm that the current hierarchy (Element hierarchy) will be fairly stable and that the public interface of these classes is sufficient for the access the Visitor classes will require. If these conditions
+are not met, then the Visitor pattern is not a good match.
+- create a Visitor base class with a VISIT(ELEMENTxxx) method for each Element derived type.
+- add an ACCEPT(VISITOR) method to the Element hierarchy. The implementation in each Element derived class is always the same => accept(Visitor v) {v.visit(this);}. Because of cyclic dependencies, the declaration
+of the Element and Visitor classes will need to be interleaved.
+- the Element hierarchy is coupled only to the Visitor base class, but the Visitor hierarchy is coupled to each Element derived class. If the stability of the Element hierarchy is low, and the stability of the 
+Visitor hierarchy is high, consider swapping the "roles" of the two hierarchies.
+- create a Visitor derived class for each "operation" to be performed on Element objects. VISIT() implementations will rely on the Element's public interface.
+- the client creates Visitor objects and passes each to Element objects by calling ACCEPT().
+
+RULES OF THUMB
+- The abstract syntax tree of Interpreter is a Composite (therefore Iterator and Visitor are also applicable).
+- Iterator can traverse a Composite. Visitor can apply an operation over a Composite.
+- The Visitor pattern is like a more powerful Command pattern because the visitor may initiate whatever is appropriate for the kind of object it encounters.
+- The Visitor pattern is the classic technique for recovering lost type information without resorting to dynamic casts.

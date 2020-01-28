@@ -1,0 +1,5 @@
+Bridge Design Pattern - Example
+
+- DrawApi interface, with concrete classes RedCircle, GreenCircle
+- Shape - abstract class that will use object of DrawAPI
+- BridgePatternDemo - will use Shape to draw different colored circles

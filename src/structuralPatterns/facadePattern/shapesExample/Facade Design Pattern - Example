@@ -1,0 +1,5 @@
+Facade Design Pattern - Example
+
+- Shape interface & concrete classes
+- ShapeMaker - Facade class => it uses the concrete classes to delegate user calls to these classes
+- FacadePatternDemo, demo class, uses ShapeMaker to show the results

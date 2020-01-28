@@ -1,0 +1,6 @@
+Interpreter Design Pattern - Example
+
+- Expression interface and concrete classes that implement it
+- TerminalExpression - class which acts as a main interpreter of context in question
+- OrExpression, AndExpression - used to create combinational expressions
+- InterpreterPatternDemo will use Expression class to create rules and demonstrate parsing of expressions

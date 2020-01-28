@@ -1,0 +1,35 @@
+Adapter Design Pattern - About
+
+INTENT
+- convert the interface of a class into another interface clients expect. Adapter lets classes work together that couldn't otherwise because of incompatible interfaces
+- wrap an existing class with a new interface
+- impedance match an old component to a new system
+
+PROBLEM
+An "off the shelf" component offers compelling functionality that you would like to reuse, but its "view of the world" is not compatible with the philosophy and architecture of the system 
+currently being developed.
+
+DISCUSSION
+Adapter is about creating an intermediary abstraction that translates, or maps, the old component to the new system. Clients call methods on the Adapter object which redirects them into 
+calls to the legacy component. This strategy can be implemented with either inheritance or with aggregation.
+Adapter functions as a wrapper or modifier of an existing class. It provides a different or translated view of that class.
+
+A. works as a bridge between 2 imcompatible interfaces.
+
+EXAMPLE
+
+CHECK LIST
+- identify the players, the component(s) that want to be accommodated (the client) and the component that needs to adapt (the adaptee)
+- identify the interface that the client requires
+- design a "wrapper" class that can "impedance match" the adaptee to the client
+- the adapter/wrapper class "has a" instance of the adaptee class
+- the adapter/wrapper class "maps" the client interface to the adaptee interface
+- the client uses (is coupled to) the new itnerface
+
+RULES OF THUMB
+- Adapter makes things work after they're designed. Bridge makes them work before they are.
+- Bridge is designed up-front to let the abstraction and the implementation vary independently. Adapter is retrofitted to make unrelated classes work together.
+- A. provides a different interface to its subjects. Proxy provides the same interface. Decorator provides an enhanced interface.
+- A. is meant to change the interface of an existing object. Decorator enhances another object without changing its interface. Decorator is thus more transparent to the application than an A. is.
+Decorator supports recursive composition, which isn't possible with pure As.
+- Facade defines a new interface, wheras A. reuses an old interface.

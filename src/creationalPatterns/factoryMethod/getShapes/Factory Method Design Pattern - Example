@@ -1,0 +1,7 @@
+Factory Method Design Pattern - Example
+
+TODO:
+- Shape Interface
+- concrete classes implementing the Shape interface
+- ShapeFactory
+- FactoryPatternDemo, the demo class, uses ShapeFactory to get a Shape Object. It passes information (CIRCLE / RECTANGLE / SQUARE) to ShapeFactory to get the type of object it needs.

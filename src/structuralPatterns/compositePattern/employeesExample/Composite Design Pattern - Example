@@ -1,0 +1,4 @@
+Composite Design Pattern - Example
+
+- Employee class that acts as composite pattern actor class
+- CompositePatternDemo, demo class, that uses Employee class to add department level hierarchy and print all employees

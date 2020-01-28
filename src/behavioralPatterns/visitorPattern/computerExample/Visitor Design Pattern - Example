@@ -1,0 +1,7 @@
+Visitor Design Pattern - Example
+
+- ComputerPart interface, defining accept operation
+- Keyboard, Mouse, Monitor and Computer - concrete classes implementing ComputerPart interface
+- ComputerPartVisitor interface - will define a visitor class operation
+- Computer uses concrete visitor to do corresponding action.
+- VisitorPatternDemo, demo class, will use Computer and ComputerPartVisitor classes to demonstrate use of visitor pattern

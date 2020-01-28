@@ -1,0 +1,6 @@
+Strategy Design Pattern - Example
+
+- Strategy interface defining an action
+- concrete strategy classes implementing the Strategy interface
+- Context - class which uses a Strategy
+- StrategyPatternDemo will use Context and strategy objects nto demonstrate change in Context behavior based on strategy it deploys or uses

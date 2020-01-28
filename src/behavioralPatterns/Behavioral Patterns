@@ -1,0 +1,17 @@
+Behavioral Patterns
+
+These patterns are concerned with communication between objects.
+
+Patterns:
+- 			Chain of responsibility - a way of passing a request between a chain of objects
+- 			Command - encapsulate a command request as an object
+- Interpreter - a way to include language elements in a program
+- 			Iterator - sequentially access the elements of a collection
+- 			Mediator - defines simplified communication between classes
+- 			Memento - capture and restore an object's internal state
+- 			Null Object - designed to act as default value of an object
+- Observer - a way to notify change to a number of classes
+- State - alter an object's behavior when its state changes
+- Strategy - encapsulates an algorithm inside a class
+- Template method - defer the exact steps of an algorithm to a sbuclass
+- Visitor - defines a new operation to a class without change

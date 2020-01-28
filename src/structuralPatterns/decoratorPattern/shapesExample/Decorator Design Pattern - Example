@@ -1,0 +1,6 @@
+Decorator Design Pattern - Example
+
+- Shape interface & concrete classes
+- ShapeDecorator- abstract decorator implementing the Shape interface & having Shape object as its instance variable
+- RedShapeDecorator - concrete class for Shape Decorator
+- DecoratorPatternDemo, demo class, that uses RedShapeDecorator to decorate Shape objects 

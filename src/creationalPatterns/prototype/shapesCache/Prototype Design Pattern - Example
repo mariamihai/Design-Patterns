@@ -1,0 +1,7 @@
+Prototype Design Pattern - Example
+
+TODO:
+- abstract class Shape
+- concrete classes extending the Shape class
+- ShapeCache class - it stores shape objects in a Hashtable and returns their clone when requested
+- PrototypePatternDemo - uses ShapeCache class to get a Shape object

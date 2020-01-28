@@ -1,0 +1,8 @@
+Abstract Factory Design Pattern - Example
+
+- Shape and Color interfaces and concrete classes implementing them
+- abstract factory class
+- factory classes for shape and color, and each factory extends AbstractFactory
+- a factory creator/generator class is created
+- AbstractFactoryPatternDemo, demo class, uses FactoryProducer to get an AbstractFactory object. It passes info CIRCLE / RECTANGLE / SQUARE for Shape and RED / GREEN / BLUE for Color 
+to AbstractFactory to get the type of objects it needs

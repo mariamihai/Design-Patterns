@@ -1,0 +1,40 @@
+Factory Method Design Pattern - About
+
+INTENT
+- define an interface for creating an object, but let the subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses
+- define a "virtual" constructor
+- the "new" operator is considered harmful
+
+PROBLEM
+A framework needs to standardize the architectural model for a range of applications, but allow for individual applications to define their own domain objects and provide for their instantiation.
+
+DISCUSSION
+Factory Method is to creating objects as Template Method is to implementing an algorithm. A superclass specifies all standard and generic behavior (using pure virtual "placeholders" for creation steps),
+and then delegates the creation details to subclasses that are supplied by the client.
+Factory Method makes a design more customizable and only a little more complicated. If other design patterns require new classes, Factory Method only requires a new operation.
+F.M. is not necessary if the class that's instantiated never changes or instantiation takes place in an operation that subclasses can easily override (such as an initialization operation).
+F.M. is similar to Abstract Factory but without the emphasis on families.
+F.M. are routinely specified by an architectural framework, and then implemented by the user of the framework.
+
+Factory method = a STATIC method of a class that returns an object of that class' type. But the actual object that is returned might be an instance of a subclass.
+An existing object might be reused, instead of a new object created.
+The client is totally decoupled from the implementation details of derived classes. Polymorphic creation is now possible.
+
+Basically, we create an object without exposing the creation logic to the client and refer to the newly created object using a common interface.
+
+EXAMPLE
+Create different shapes or different objects based on injecting molds (the resulting product is determined by the used mold).
+
+CHECK LIST
+- if you have an inheritance hierarchy that exercises polymorphism, consider adding a polymorphic creation capability by defining a STATIC factory method in the base class.
+- design the arguments to the factory method. What qualities or characteristics are necessary and sufficient to identify the correct derived class to instantiate?
+- consider designing an internal "object pool" that will allow objects to be reused instead of created from scratch
+- consider making all constructors PRIVATE or PROTECTED
+
+RULES OF THUMB
+- Abstract Factory classes can often be implemented with Factory Methods, but they can be implemented using Prototype
+- F.Ms. are usually called withing Templeta Methods
+- F.M - creation through inheritance while Prototype - creation through delegation
+- Prototype doens't require subclassing but it requires an Initialize operation. F.M. requires subclassing but doesn't require Initialize
+- The advantage of a F.M. is that it can return the same instance multiple times, or it can return a subclass rather than an object of that exact type
+- A F.M. enforces the encapsulation of object creation and allows an object to be requested without inextricable coupling to the act of creation

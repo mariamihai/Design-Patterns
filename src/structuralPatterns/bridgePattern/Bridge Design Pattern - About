@@ -1,0 +1,47 @@
+Bridge Design Pattern - About
+
+INTENT
+- decouple an abstraction from its implementation so that the two can vary independently
+- publish interface in an interface hierarchy and bury implementation in its own inheritance hierarchy
+- beyond encapsulation, to insulation
+
+PROBLEM
+Use subclassing of an abstract base class to provide alternative implementations. This locks in compile-time binding between interface and implementation. The abstraction and implementation cannot be
+independently extended or composed.
+The Bridge design pattern proposes refactoring  this exponentially explosive inheritance hierarchy into 2 orthogonal hierarchies - one for platform-independent abstraction and the other for platform-dependent 
+implementations.
+
+DISCUSSION
+- Decompose the component's interface and implementation into orthogonal class hierarchies. The interface class contains a pointer to the abstract implementation class. This pointer is initialized with an
+instance of a concrete implementation class, but all subsequent interaction from the interface class to the implementation class is limited to the abstraction maintained in the implementation base class. The
+client interacts with the interface class and it in turn "delegates" all requests to the implementation class.
+The interface object is the "handle" known and used by the client while the implementation object (or "body") is safely encapsulated to ensure that it may continue to evolve or be entirely replaced (or shared 
+at run-time).
+
+Use this pattern when:
+- you want run-time binding of the implementation
+- you have a proliferation of classes resulting from a coupled interface and numerous implementations
+- you want to share an implementation among multiple objects
+- you need to map orthogonal class hierarchies
+Consequences:
+- decoupling the object's interface
+- improved extensibility (you can extend/subclass the abstraction and implementation hierarchies independently)
+- hiding details from clients
+
+EXAMPLE
+- a household switch controlling lights, ceiling fants, etc.
+
+CHECK LIST
+- decide if 2 orthogonal dimensions exist in the domain. These independent concepts could be abstraction/platform or domain/infrastructure or front-end/back-end or interface/implementation
+- design the separation of concerns - what does the client want and what do the platform provide
+- design a platform-oriented interface that is minimal, necessary and sufficient. Its goal is to decouple the abstraction from the platform
+- define a derived class of that interface for each platform
+- create the abstraction base class that "has a" platform object and delegates the platform-oriented functionality to it
+- define specialization of the abstraction class if desired
+
+RULES OF THUMB
+- Bridge is designed up-front to let the abstraction and the implementation vary independently. Adapter is retrofitted to make unrelated classes work together.
+- The structure of State and Bridge are identical (except that Bridge admits hierarchies of envelope classes, whereas State allows only one). The two patterns use the same structure to solve different problems: 
+State allows an object's behavior to change along with its state, while Bridge's intent is to decouple an abstraction from its implementation so that the two can vary independently.
+- If interface classes delegate the creation of their implementation classes (instead of creating/coupling themselves directly), then the design usually uses the Abstract Factory pattern to create the 
+implementation objects.

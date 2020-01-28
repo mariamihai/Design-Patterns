@@ -1,0 +1,13 @@
+Creational Patterns
+
+They provide a way to create objects while hiding the creation logic, rather then instantiating objects directly using new operator.
+This gives program more flexibility in deciding which objects need to be created for a given case.
+
+
+Patterns:
+- Abstract Factory - creates an instance of several families of classes
+- Builder - separates object construction from its representation
+- Factory Method - creates an instance of several derived classes
+- Object Pool - avoid expensive acquisition and release of resources by recycling objects that are no longer in use
+- Prototype - a fully initialized instance to be copied or cloned
+- Singleton - a class of which only a single instance can exist

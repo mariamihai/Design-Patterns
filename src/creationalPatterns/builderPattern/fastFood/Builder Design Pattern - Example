@@ -1,0 +1,14 @@
+Builder Design Pattern - Example
+
+Fast food restaurant with menus consisting of burger and cold drink.
+The burger can be a Veg Burger or a Chicken Burger, will be packet in a wrapper.
+The drink will be coke or pepsi, packet in a bottle.
+
+TODO:
+- Item interface - represents the food items (burger or drink)
+- concrete classes implementing the Item interface
+- Packing interface representing packaging of the food
+- concrete implementations of Packing
+- create a Meal class having an ArrayList<Item>
+- MeailBuilder - to build different types of Meal objects by combining Item
+- BuilderPatternDemo - demo class that will use MealBuilder to build a Meal

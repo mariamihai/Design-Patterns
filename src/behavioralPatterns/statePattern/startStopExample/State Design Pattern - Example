@@ -1,0 +1,6 @@
+State Design Pattern - Example
+
+- State interface defining an action
+- concrete classes implementing the State interface
+- Context - a class which carries a State
+- StatePatternDemo - uses Context and state objects to demonstrate change in Context behavior based on type of state it is in

@@ -1,0 +1,17 @@
+Proxy Design Pattern - About
+
+INTENT
+- provide a surrogate or placeholder for another object to control access to it
+- use an extra level of indirection to support distributed, controlled or intelligent access
+- add a wrapper and delegation to protect the real component from undue complexity
+
+PROBLEM
+You need to support resource-hungry objects and you don't want to instantiate such objects unless and until they are actually requested by the client.
+
+DISCUSSION
+
+EXAMPLE
+
+CHECK LIST
+
+RULES OF THUMB

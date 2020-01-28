@@ -1,0 +1,48 @@
+Composite Design Pattern - About
+
+INTENT
+- composes objects into tree structures to represent whole-part hierarchies. Composite lets clients treat individual objects and compositions of objects uniformly
+- recursive composition
+- "directories contain entries, each of whoch could be a directory"
+- 1-to-many "has a" up the "is a" hierarchy
+
+PROBLEM
+Application needs to manipulate a hierarchical collection of "primitive" and "composite" objects. Processing of a primitive object is handled one way and processing of a composite object is handled 
+differently. Having to query the "type" of each object before attempting to process it is not desirable.
+
+DISCUSSION
+Define an abstract class (Component) that specifies the behavior that needs to be exercised uniformly across all primitive and composite objects. Subclass the Primitive and Composite classes of the 
+Component class. Each Composite object "couples" itself only to the abstract type Component as it manages its "children".
+
+USe this pattern whenever you have "composites that certain components, each of which could be a composite".
+
+Child management methods (addChild(), removeChild()) should normally be defined in the Composite class. Unfortunately, the desire to treat Primitives and Composites uniformly requires that these methods 
+be moved to the abstract Component class.
+
+Composite doesn't force you to treat all Components as Composites. It tells you to put all operations that you want to treat "uniformly" in the Component class.
+
+EXAMPLE
+The Composite composes objects into tree structures and lets clients treat individual objects and compositions uniformly.
+Arithmetic expressions are Composites.
+
+CHECK LIST
+- ensure that your problem is about representing "wlole-part" hierarchical relationships.
+- "Containers that contain containees, each of which could be a container". "Assemblies that contain components, each of which could be an assembly". Divide your concepts into container classes and 
+containee classes.
+- create a "lowest common denominator" interface that makes your containers and containees interchangeable. It should specify the behavior that needs to be exercised uniformly across all containee and 
+container objects.
+- all container and containee classes declare an "is a" relationship to the interface
+- all container classes declare a one-to-many "has a" relationship to the interface
+- container classes leverage polymorphism to delegate to their containee objects
+- child management methods [e.g. addChild(), removeChild()] should normally be defined in the Composite class. Unfortunately, the desire to treat Leaf and Composite objects uniformly may require that 
+these methods be promoted to the abstract Component class. See the Gang of Four for a discussion of these "safety" versus "transparency" trade-offs.
+
+RULES OF THUMB
+- Composite and Decorator have similar diagrams, reflecting the fact that both rely on recursive composition to organize an open-ended number of objects.
+- Composite can be traversed with Iterator. Visitor can apply an operation over a Composite. Composite could use Chain of Responsibility to let components access global properties through their parents. 
+It could also use Decorator to override these properties on parts of the composition. It could use Observer to tie one object structure to another and State to let a component change its behavior as its 
+state changes.
+- Composite can let you compose a Mediator out of small pieces through recursive composite.
+- Decorator is designated to let you add responsibilities to objects without subclassing. Composite's focus is not on embellishment but on representation. These intents are distinct but complementary.
+Composite and Decorator are often used in cocnert.
+- Flyweight is often combined with Composite to implement shared leaf nodes.

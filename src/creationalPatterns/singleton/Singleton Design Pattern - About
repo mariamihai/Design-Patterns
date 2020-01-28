@@ -1,0 +1,35 @@
+Singleton Design Pattern - About
+
+INTENT
+- ensure a class has only one instance and provide a global point of access to it
+- encapsulated "just-in-time initialization" or "initialization on first use"
+
+PROBLEM
+Application needs one and only one instance of an object. Additionally, lazy initialization and global access are necessary.
+
+DISCUSSION
+Make the class of the single instance object responsible for creation, initialization, access and enforcement. Declare the instance as a private static data member.
+Provide a public static member function that encapsulates all initialization code and provides access to the instance.
+The client calls the accessor function whenever a reference to the single instance is required.
+
+Used when:
+- ownership of the single instance cannot be reasonably assigned
+- lazy initialization is desirable
+- global access is not otherwise provided for
+
+The singleton pattern can be extended to support access to an application-specific number of instances.
+The "static member function accessor" approach will not support subclassing of the Singleton class.
+
+EXAMPLE
+
+CHECK LIST
+- define a private STATIC attribute in the "single instance" class
+- define a public STATIC accessor function in the class
+- do "lazy initialization" (creation on first use) in the accessor function
+- define all constructors to be PROTECTED or PRIVATE
+- clients may only use the accessor function to manipulate the Singleton
+
+RULES OF THUMB
+- Facade objects are often Singletons because only one Facade object is required
+- State objects are often Singleton
+- Singleton is unnecessary when it's simpler to pass an object resource as a reference to the objects that need it, rather than letting objects access the resource globally.

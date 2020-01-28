@@ -1,0 +1,39 @@
+Decorator Design Pattern - About
+
+INTENT
+- attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.
+- client-specified embellishment of a core object by recursively wrapping it
+- wrapping a gift, putting it in a box, and wrapping the box
+
+PROBLEM
+You want to add behavior or state to individual objects at run-time. Inheritance is not feasible because it is static and applies to an entire class.
+
+DISCUSSION
+The solution to this class of problems involves encapsulating the original object inside an abstract wrapper interface. Both the decorator objects and the core object inherit from this abstract interface.
+The interface uses recursive composition to allow an unlimited number of decorator "layers" to be added to each core object.
+This pattern allows responsibilities to be added to an object, not methods to an object's interface. The interface presented to the client must remain constant as successive layers are specified.
+The core object's identity has been "hidden" inside of a decorator object.
+
+EXAMPLE
+The ornaments that are added to pine or fir trees are examples of Decorators (lights, garland, candy canes, glass ornaments, etc.). The ornaments do not change the tree itself which is recognizable as a 
+Christmas tree regardless of particular ornaments used.
+Eg. of additional functionality - the addition of lights allows one to "light up" a Christmas tree.
+
+CHECK LIST
+- ensure the context is: a single core (or non-optional) component, several optional embellishments or wrappers and an interface that is common to all
+- create a "lowest common denominator" interface that makes all classes interchangeable
+- create a second level base class (Decorator) to support the optional wrapper classes
+- the Core class and Decorator class inherit from the LCD interface
+- the Decorator class declares a composition relationship to the LCD interface, and this data member is initialized in its constructor
+- the Decorator class delegates to the LCD object
+- define a Decorator derived class for each optional embellishment
+- Decorator derived classes implement their wrapper functionality and delegate to the Decorator base class
+- the client configures the type and ordering of Core and Decorator objects.
+
+RULES OF THUMB
+- Adapter provides a different interface to its subject. Proxy provides the same interface. Decorator provides an enhanced interface.
+- Adapter changes an object's interface while Decorator enhances an object's responsibilities.
+- A Decorator can be viewed as a degenerate Composite with only one component. But it isn't intended for object aggregation and it adds additional responsibilities.
+- Decorator and Proxy have different purposes but similar structures. Both describe how to provide a level of indirection to another object, and the implementations keep a reference to the object to which 
+they forward requests.
+- Decorator lets you change the skin of an object while Strategy lets you change the guts.

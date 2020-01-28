@@ -1,0 +1,37 @@
+Template Method Design Pattern - About
+
+INTENT
+- define the skeleton of an algorithm in an operation, deferring some steps to client subclasses. T.M. lets subclasses redefine certain steps of an algorithm without changing the algorithm's
+structure.
+- base class declares algorithm "placeholders" and derived classes implement the placeholders.
+
+PROBLEM
+Two different components have significant similarities, but demonstrate no reuse of common interface or implementation. If a change common to both components becomes necessary, duplicate 
+effort must be expended.
+
+DISCUSSION
+Decide which steps of an algorithm are invariant (or standard) and which are not (or customizable). The invariant steps are implemented in an abstract base class while the variant steps are either a default
+implementation or no implementation at all. The variant steps represent "hooks" or "placeholders" that can or must be supplied by the component's client in a concrete derived class.
+
+Frameworks (large scale reuse infrastructures) use Template Method a lot. All reusable code is defined in the framework's base classes, and then clients of the framework are free to define 
+customizations by creating derived classes as needed.
+
+EXAMPLE
+- Home building when developing a new subdivision. A typical subdivision consists of a limited number of floor plans within different variations available for each. Within a floor plan, the foundation, 
+framing, plumbing and wiring will be identical for each house. Variation is introduced in the later stages of construction to produce a wider variety of models.
+- The daily routine of a worker... work might be an abstract method in the base class that needs to be implemented by each subclass. 
+
+CHECK LIST
+- examine the algorithm, and decide which steps are standard and which steps are peculiar to each of the current classes.
+- define a new abstract base class to host the "don't call us, we'll call you" framework
+- move the shell of the algorithm (template method) and the definition of all standard steps to the new base class
+- define a placeholder or "hook" method in the base class for each step that requires many different implementations. This can be a default implementation or an abstract method.
+- invoke the hook method(s) from the template method
+- each of the existing classes declares an "is-a" relationship details that have been moved to the base class
+- the only details that will remain in the existing classes will be the implementation details peculiar to each derived class.
+
+RULES OF THUMB
+- Strategy is like T.M. except in its granularity
+- T.M. uses inheritance to vary part of an algorithm. Strategy uses delegation to vary the entire algorithm.
+- Strategy modifies the logic of individual objects. T.M. modifies the logic of an entire class.
+- Factory.M. is a specialization of T.M.

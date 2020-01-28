@@ -1,0 +1,32 @@
+Prototype Design Pattern - About
+
+INTENT
+- specify the kind of objects to create using a prototypical instance, and create new objects by copying this prototype.
+- co-opt one instance of a class for use as a breeder of all future instances
+- the NEW operator considered harmful
+
+PROBLEM
+Application "hard wired" the class of object to create in each "new" expression.
+
+DISCUSSION
+Declare an abstract base class that specifies a pure virtual "clone" method and maintains a dictionary of all "cloneable" concrete derived classes. Any class that 
+needs a "polymorphic constructor" capability derives itself from the abstract base class, registers its prototypical instance, and implements the CLONE() operation.
+The Factory knows how to find the correct Prototype, and each Product knows how to spawn new instances of itself.
+Prototype refers to creating duplicate objects while keeping performance in mind.
+
+EXAMPLE
+The prototype pattern specifies the kind of objects to create using a prototypical instance. Prototypes of new products are often built prior to full production.
+Eg., an object is to be created after a costly database operation. We can cache the object, return its clone on next request and update the database as and when needed thus 
+reducing database calls.
+
+CHECK LIST
+- Add a CLONE() method to the existing "product" hierarchy.
+- Design a "registry" that maintains a cache of protypical objects. The registry could be encapsulated in a new FACTORY class, or in the base class of the "product" hierarchy.
+- Design a factory method that may (or may not) accept arguments, finds the correct prototype object, calls CLONE() on that object, and returns the result.
+- The client replaces all references to the NEW operator with calls to the factory method.
+
+RULES OF THUMB
+- Designs that make heavy use of the Composite or Decorator patterns often can benefit from Prototype as well
+- Prototype is unique among the other creational patterns in that it doesn't require a class, only an object.
+- Prototypes are useful when object initialization is expensive and you anticipate few variations on the initialization parameters. Prototype can avoid expensive 
+"creation from scratch" and support cheap cloning of a pre-initialized prototype.

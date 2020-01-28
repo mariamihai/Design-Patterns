@@ -1,0 +1,7 @@
+Adapter Design Pattern - Example
+
+- MediaPlayer interface
+- AudioPlayer class implementing mp3 format audio files
+- AdvancedMediaPlayer interface + concrete classes that play mp4 and vlc files
+- adaptee MediaPlayer that can play those formats
+- AdapterPatternDemo, demo class, uses an AudioPlayer to play various formats. 

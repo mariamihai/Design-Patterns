@@ -1,0 +1,5 @@
+Template Method Design Pattern - Example
+
+- Game abstract class, with a template method set to be final so that it cannot be overridden
+- Cricket and Football are concrete classes that extent Game and override its methods
+- TemplatePatternDemo, demo class, uses Game to demonstrate the use of template pattern.

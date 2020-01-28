@@ -1,0 +1,38 @@
+Builder Design Pattern - About
+
+INTENT
+- separate the construction of a complex object from its representation so that the same construction process can create different representation
+- parse a complex representation, create one of several targets
+
+PROBLEM
+An application needs to create the elements of a complex aggregate.
+The specification of the aggregate exists on a secondary storage and one of many representations needs to be build in primary storage.
+
+DISCUSSION
+Separate the algorithm for interpreting (reading, parsing, etc) a stored persistence mechanism (RTF files) from the algorithm for building & representing one of the target products (ASCII, TeX, text widget).
+The focus/distinction is on creating complex aggregates.
+
+The "director" invokes "builder" services as it interprets the external format. The "builder" creates part of the complex object each time it is called & maintains all intermediate state.
+When the product is finished, the client retrieves the result from the "builder".
+
+Affords finer control over the construction process. The Builder pattern constructs the producs step by step under the control of the "director".
+
+EXAMPLE
+A menu at a fast food restaurant, where you god a main item, a side item, a drink (maybe a toy for children's menu) - a hamburger, fries, Coke, specified toy.
+
+CHECK LIST
+- decide if a common input & many possible representations (or outputs) is the problem at hand
+- encapsulate the parsing of a common input in a Reader class
+- design a standard protocol for creating all possible output representations. Capture the steps of this protocol in a Builder interface
+- define a Builder derived class for each target represenation
+- the client creates a Reader object and a Builder object, and registers the latter with the former
+- the client asks the reader to "construct"
+- the client asks the Builder to return the result
+
+RULES OF THUMB
+- The Builder pattern can use Singleton in its implementation
+- Builder focuses on constructing a complex object step by step and returns the product as a final step. 
+Abstract Factory emphasizes a family of product objects (either simple or complex) and the product gets returned immediately.
+- Builder often builds a Composite
+- Often, designs start out using Factory Method (less complicated, more customizable, subclasses proliferate) 
+and evolves toward Abstract Factory, Prototype or Builder (flexible, more complex) as the designer discovers where more flexibility is needed.
